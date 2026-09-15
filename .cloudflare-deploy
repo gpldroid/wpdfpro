@@ -1,3 +1,6 @@
 Cloudflare Pages deployment marker.
 Source of truth: main branch.
+Pages project: wpdfpro.
 Publish directory: repository root (.).
+Build command: none.
+Deploy command: npx wrangler pages deploy . --project-name wpdfpro
