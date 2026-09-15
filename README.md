@@ -1,6 +1,22 @@
-# WPDF
+# WPDF Pro
 
-WPDF is a browser-based PDF tools application focused on client-side file processing.
+WPDF Pro is a browser-based PDF tools application focused on client-side file processing.
+
+## Cloudflare deployment
+
+The `main` branch is the production source for **Cloudflare Pages**. The application is published directly from the repository root and uses Pages Functions plus a D1 database.
+
+### Deploy
+
+No build command is required. Use:
+
+```bash
+npx wrangler pages deploy . --project-name wpdfpro
+```
+
+Do not use `npx wrangler deploy`; that is the Workers deployment command and is not compatible with this Pages project configuration.
+
+See `CLOUDFLARE.md` for the production D1 and Zero Trust configuration.
 
 ## Current application
 
@@ -41,31 +57,9 @@ The project includes:
 - `manifest.webmanifest`
 - `sw.js` offline application-shell foundation
 
-The service worker remains a deployment foundation; registration and production icon work are intentionally separate follow-up tasks.
-
 ## Privacy and dependency policy
 
 The application is designed around client-side processing for supported operations. Third-party libraries are currently loaded from CDNs. Conversion fidelity and browser compatibility should be audited before replacing or removing these dependencies.
-
-## Roadmap
-
-- [x] Establish a protected development branch.
-- [x] Add project license and ignore rules.
-- [x] Separate CSS and JavaScript from `index.html`.
-- [x] Establish PDF module boundaries.
-- [x] Extract PDF split, edit, numbering, and image operations.
-- [x] Extract Word, Excel, and PowerPoint conversion boundaries.
-- [x] Add browser smoke coverage for core PDF modules.
-- [x] Add CI syntax and structure validation.
-- [x] Add SEO crawling assets (`robots.txt` and `sitemap.xml`).
-- [x] Add PWA manifest and service-worker foundation.
-- [x] Switch PDF merge from the legacy runtime to the new module.
-- [x] Switch remaining core PDF organization operations from the legacy runtime to tested modules.
-- [ ] Audit conversion fidelity and browser compatibility on real browsers/devices.
-- [ ] Wire PWA registration and add production application icons.
-- [ ] Complete mobile UX/accessibility audit.
-- [ ] Replace remaining monolithic UI/processing paths with tested modules.
-- [ ] Reduce unnecessary external dependencies where practical.
 
 ## License
 
