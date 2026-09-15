@@ -1,0 +1,8 @@
+name = "wpdfpro"
+compatibility_date = "2026-09-15"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wpdf-production"
+database_id = "09339c53-6f74-4d35-b9f4-04e7cfd19246"
