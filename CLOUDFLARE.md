@@ -1,4 +1,4 @@
-# Cloudflare setup — WPDF
+# Cloudflare setup — WPDF Pro
 
 ## 1. Production D1 database
 
@@ -26,9 +26,17 @@ The schema stores application settings, privacy-friendly visit analytics, and to
 
 ## 3. Deploy to Cloudflare Pages
 
-Connect `gpldroid/wpdf` to Cloudflare Pages and use the repository root as the build output directory. No build command is required for the static application.
+This repository is a **Cloudflare Pages** project with Pages Functions. The publish directory is the repository root (`.`), and no build command is required.
 
-Make sure the D1 binding is named exactly `DB` for the production environment.
+Use this deployment command:
+
+```bash
+npx wrangler pages deploy . --project-name wpdfpro
+```
+
+Do **not** use `npx wrangler deploy` for this repository. That command targets a Workers deployment and will fail because this project intentionally uses Pages (`pages_build_output_dir = "."`).
+
+Make sure the Cloudflare Pages project name is exactly `wpdfpro` and the production D1 binding is named `DB`.
 
 ## 4. Protect the administration area
 
@@ -59,7 +67,7 @@ Files remain in the browser during editing; the editor does not upload document 
 
 ## 7. Analytics and PWA
 
-The repository now includes a privacy-friendly analytics module at `assets/js/analytics.js`, a tool-usage API at `/api/tool-usage`, and a PWA shell cache update in `sw.js`.
+The repository includes a privacy-friendly analytics module at `assets/js/analytics.js`, a tool-usage API at `/api/tool-usage`, and a PWA shell cache update in `sw.js`.
 
 The repository quality workflow validates JavaScript syntax, required production files, and the runtime integration test.
 
